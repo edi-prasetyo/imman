@@ -92,8 +92,8 @@ class Galery extends CI_Controller
         $config['source_image']           = './assets/img/galery/' . $upload_data['uploads']['file_name'];
         $config['create_thumb']           = TRUE;
         $config['maintain_ratio']         = TRUE;
-        $config['width']                  = 1000;
-        $config['height']                 = 1000;
+        $config['width']                  = 2000;
+        $config['height']                 = 2000;
         $config['thumb_marker']           = '';
         $this->load->library('image_lib', $config);
         $this->image_lib->resize();
@@ -160,8 +160,8 @@ class Galery extends CI_Controller
           $config['source_image']         = './assets/img/galery/' . $upload_data['uploads']['file_name'];
           $config['create_thumb']         = TRUE;
           $config['maintain_ratio']       = TRUE;
-          $config['width']                = 1000;
-          $config['height']               = 1000;
+          $config['width']                = 2000;
+          $config['height']               = 2000;
           $config['thumb_marker']         = '';
           $this->load->library('image_lib', $config);
           $this->image_lib->resize();
