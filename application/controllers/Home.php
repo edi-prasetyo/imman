@@ -27,7 +27,7 @@ class Home extends CI_Controller
     $category                 = $this->category_model->get_category_home();
     $layanan                   = $this->layanan_model->get_layanan();
     $galery_featured            = $this->galery_model->featured();
-    if (!$this->agent->is_mobile()) {
+  
       // Desktop View
       $data = array(
         'title'                 => $meta->title . ' - ' . $meta->tagline,
@@ -41,20 +41,6 @@ class Home extends CI_Controller
         'content'               => 'front/home/index_home'
       );
       $this->load->view('front/layout/wrapp', $data, FALSE);
-    } else {
-      // Mobile View
-      $data = array(
-        'title'                 => $meta->title . ' - ' . $meta->tagline,
-        'keywords'              => $meta->title . ' - ' . $meta->tagline . ',' . $meta->keywords,
-        'deskripsi'             => $meta->description,
-        'slider'                =>  $slider,
-        'berita'                => $berita,
-        'category'              => $category,
-        'layanan'               => $layanan,
-        'galery_featured'       => $galery_featured,
-        'content'               => 'mobile/home/index'
-      );
-      $this->load->view('mobile/layout/wrapp', $data, FALSE);
-    }
+    
   }
 }

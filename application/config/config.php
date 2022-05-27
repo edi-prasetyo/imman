@@ -459,7 +459,7 @@ $config['csrf_protection'] = TRUE;
 $config['csrf_token_name'] = 'login';
 $config['csrf_cookie_name'] = 'login';
 $config['csrf_expire'] = 7200;
-$config['csrf_regenerate'] = TRUE;
+$config['csrf_regenerate'] = false;
 $config['csrf_exclude_uris'] = array();
 
 /*

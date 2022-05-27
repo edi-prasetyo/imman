@@ -30,19 +30,33 @@ class User_model extends CI_Model
     $query = $this->db->get();
     return $query->result();
   }
-  public function user_detail()
+  public function get_pengurus()
+  {
+    $this->db->select('user.*, user_role.role, jabatan.jabatan_name');
+    $this->db->from('user');
+    // join
+    $this->db->join('user_role', 'user_role.id = user.role_id', 'LEFT');
+    $this->db->join('jabatan', 'jabatan.id = user.jabatan_id', 'LEFT');
+    // End Join
+    $this->db->where('role_id', 3);
+    $this->db->or_where('role_id', 2);
+    $this->db->order_by('id', 'DESC');
+    $query = $this->db->get();
+    return $query->result();
+  }
+  public function get_anggota()
   {
     $this->db->select('user.*, user_role.role');
     $this->db->from('user');
     // join
     $this->db->join('user_role', 'user_role.id = user.role_id', 'LEFT');
     // End Join
-    $this->db->where(array(
-      'user.email'    => $this->session->userdata('email')
-    ));
+    $this->db->where('role_id', 4);
+    $this->db->order_by('id', 'DESC');
     $query = $this->db->get();
-    return $query->row();
+    return $query->result();
   }
+
   public function update($data)
   {
     $this->db->where('id', $data['id']);
@@ -61,11 +75,38 @@ class User_model extends CI_Model
   // Product User Read
   public function detail($id)
   {
-    $this->db->select('*');
+    $this->db->select('user.*, jabatan.jabatan_name');
     $this->db->from('user');
-    $this->db->where('id', $id);
-    $this->db->order_by('id');
+    // join
+    $this->db->join('jabatan', 'jabatan.id = user.jabatan_id', 'LEFT');
+    // End Join
+    $this->db->where('user.id', $id);
     $query = $this->db->get();
     return $query->row();
+  }
+  public function user_detail($user_id)
+  {
+    $this->db->select('user.*, jabatan.jabatan_name');
+    $this->db->from('user');
+    // join
+    $this->db->join('jabatan', 'jabatan.id = user.jabatan_id', 'LEFT');
+    // End Join
+    $this->db->where('user.id', $user_id);
+    $query = $this->db->get();
+    return $query->row();
+  }
+  public function pengurus_dpd($kota_id)
+  {
+    $this->db->select('user.*, jabatan.jabatan_name, kota.kota_name');
+    $this->db->from('user');
+    // join
+    $this->db->join('jabatan', 'jabatan.id = user.jabatan_id', 'LEFT');
+    $this->db->join('kota', 'kota.id = user.kota_id', 'LEFT');
+    // End Join
+    $this->db->where(['role_id' => 3, 'kota_id' => $kota_id]);
+    $this->db->or_where('role_id', 2);
+    $this->db->order_by('id', 'DESC');
+    $query = $this->db->get();
+    return $query->result();
   }
 }

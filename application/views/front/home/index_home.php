@@ -35,10 +35,30 @@ $meta = $this->meta_model->get_meta(); ?>
     </div>
 </div>
 
+<section class="bg-success my-5 p-3">
+    <?php foreach ($galery_featured as $data) : ?>
+        <div class="container">
+            <div class="col-md-9 mx-auto">
+                <div class="row flex-lg-row align-items-center">
+                    <div class="col-md-3 col-8">
+                        <img src="<?php echo base_url('assets/img/galery/' . $data->galery_img); ?>" class="d-block mx-lg-auto img-fluid rounded" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+                    </div>
+                    <div class="col-md-9 col-12 text-white">
+                        <h5>Ketua Umum</h5>
+                        <h2 class="display-5 fw-bold lh-1 mb-3"><?php echo $data->galery_title; ?></h2>
+
+                        <p class="lead"><?php echo $data->galery_desc; ?></p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
+
+</section>
 
 
-
-<div class="container mb-5">
+<!-- <div class="container mb-5">
     <div class="row">
         <?php foreach ($category as $category) : ?>
             <div class="col-md-3 col-6">
@@ -53,11 +73,11 @@ $meta = $this->meta_model->get_meta(); ?>
             </div>
         <?php endforeach; ?>
     </div>
-</div>
+</div> -->
 
 
 
-<section class="bg-white py-3">
+<!-- <section class="bg-white py-3">
     <div class="container pb-5">
         <div class="header-title my-5">
             <h2 class="text-center"><span style="font-weight:400;">Layanan</span><span style="font-weight:700;"> Donasi</span></h2>
@@ -90,9 +110,9 @@ $meta = $this->meta_model->get_meta(); ?>
 
         </div>
     </div>
-</section>
+</section> -->
 
-<section class="bg-info">
+<!-- <section class="bg-info">
     <?php foreach ($galery_featured as $data) : ?>
         <div class="container col-xxl-8 px-4 py-2">
             <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
@@ -108,33 +128,40 @@ $meta = $this->meta_model->get_meta(); ?>
         </div>
     <?php endforeach; ?>
 
-</section>
+</section> -->
 
 
 
 
 <section class="py-5">
     <div class="container">
-        <div class="header-title mb-5">
-            <h2 class="text-center"><span style="font-weight:400;">Berita</span><span style="font-weight:700;"> Terbaru</span></h2>
-        </div>
         <div class="row">
-            <?php foreach ($berita as $berita) : ?>
-
-                <div class="col-md-4 col-6">
-                    <a href="<?php echo base_url('berita/detail/' . $berita->berita_slug); ?>" class="card bg-dark text-white shadow-sm border-0">
-                        <div class="img-frame">
-                            <img class="card-img" style="opacity: .25" src="<?php echo base_url('assets/img/artikel/' . $berita->berita_gambar); ?>" alt="Card image">
-                        </div>
-                        <div class="card-img-overlay d-flex flex-column align-items-start overflow-hidden">
-                            <h5 class="card-title"><?php echo substr($berita->berita_title, 0, 35); ?>..</h5>
-                            <p class="card-text mt-auto"><?php echo date('F j, Y', strtotime($berita->date_created)); ?></p>
-                            <span class="badge badge-danger font-weight-normal mr-2"><?php echo $berita->category_name; ?></span>
-                        </div>
-                    </a>
+            <div class="col-md-8">
+                <div class="header-title mb-5">
+                    <h4 class="text-left"><span style="font-weight:400;">Berita</span><span style="font-weight:700;"> Terbaru</span></h4>
                 </div>
+                <div class="row">
+                    <?php foreach ($berita as $berita) : ?>
 
-            <?php endforeach; ?>
+                        <div class="col-md-4 col-6">
+                            <a href="<?php echo base_url('berita/detail/' . $berita->berita_slug); ?>" class="card bg-dark text-white shadow-sm border-0">
+                                <div class="img-frame">
+                                    <img class="card-img" style="opacity: .25" src="<?php echo base_url('assets/img/artikel/' . $berita->berita_gambar); ?>" alt="Card image">
+                                </div>
+                                <div class="card-img-overlay d-flex flex-column align-items-start overflow-hidden">
+                                    <h5 class="card-title"><?php echo substr($berita->berita_title, 0, 35); ?>..</h5>
+                                    <p class="card-text mt-auto"><?php echo date('F j, Y', strtotime($berita->date_created)); ?></p>
+                                    <span class="badge badge-danger font-weight-normal mr-2"><?php echo $berita->category_name; ?></span>
+                                </div>
+                            </a>
+                        </div>
+
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h4 class="text-left"><span style="font-weight:700;"> Agenda</span></h4>
+            </div>
         </div>
     </div>
 

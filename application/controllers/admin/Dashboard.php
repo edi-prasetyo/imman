@@ -18,18 +18,15 @@ class Dashboard extends CI_Controller
   }
   public function index()
   {
-    $user_member                  = $this->user_model->user_member();
-    $transaction                    = $this->transaction_model->get_alltransaction();
-    $new_transaction                = $this->transaction_model->new_transaction();
-    $list_user                    = $this->user_model->listUser();
-    $count_user                   = $this->user_model->listUser();
+    $id = $this->session->userdata('id');
+    $user = $this->user_model->detail($id);
+    $kota_id = $user->kota_id;
+
+    $pengurus_dpd = $this->user_model->pengurus_dpd($kota_id);
+
     $data = [
       'title'                     => 'Dashboard',
-      'list_user'                 => $list_user,
-      'user_member'               => $user_member,
-      'transaction'                 => $transaction,
-      'new_transaction'             => $new_transaction,
-      'count_user'                => $count_user,
+      'pengurus_dpd'              => $pengurus_dpd,
       'content'                   => 'admin/dashboard/dashboard'
     ];
     $this->load->view('admin/layout/wrapp', $data, FALSE);

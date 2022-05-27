@@ -9,7 +9,7 @@
 </nav>
 
 
-<section class="boot-elemant-bg py-md-5 py-4 hero" style="height: 200px;background-color:rgba(0, 80, 184)">
+<section class="boot-elemant-bg py-md-5 py-4 hero" style="height: 200px;background-color:#04875a">
    <div class="container position-relative py-md-5 py-0">
       <div class="row">
          <div class="container" style="position: absolute;">
@@ -27,9 +27,7 @@
       </div>
    </div>
    <div class="elemant-bg-overlay black"></div>
-   <svg class="hero-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none">
-      <path d="M0 10 0 0 A 90 59, 0, 0, 0, 100 0 L 100 10 Z"></path>
-   </svg>
+
 </section>
 
 <?php if ($this->session->userdata('id')) : ?>
@@ -58,14 +56,7 @@
                </div>
             </a>
 
-            <a href="<?php echo base_url('myaccount/transaksi'); ?>" class="d-flex w-100 align-items-center border-bottom px-3 py-3 text-decoration-none">
-               <div class="left mr-3">
-                  <h6 class="m-0 text-muted"><i class="ri-file-paper-2-line mr-2"></i> Transaksi</h6>
-               </div>
-               <div class="right ml-auto">
-                  <h6 class="font-weight-bold m-0"><i class="ri-arrow-right-s-line"></i></h6>
-               </div>
-            </a>
+
          </div>
 
          <div class="bg-white rounded shadow-sm mt-3 profile-details">
@@ -81,7 +72,7 @@
             </a>
          </div>
 
-         <div class="bg-white rounded shadow-sm mt-3 profile-details">
+         <!-- <div class="bg-white rounded shadow-sm mt-3 profile-details">
             <h6 class="pl-3 pt-2">Tentang</h6>
 
             <a href="<?php echo base_url('myaccount/update'); ?>" class="d-flex w-100 align-items-center border-bottom px-3 py-3 text-decoration-none">
@@ -117,7 +108,7 @@
                </div>
             </a>
 
-         </div>
+         </div> -->
 
          <a href="<?php echo base_url('auth/logout'); ?>" class="btn btn-danger btn-block my-2">Keluar</a>
 

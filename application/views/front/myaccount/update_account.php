@@ -51,12 +51,12 @@
 
                             </div>
                             <div class="col-3">
-                                Phone
+                                Whatsapp
                             </div>
                             <div class="col-9">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="user_phone" placeholder="No. Handphone" value="<?php echo $user->user_phone; ?>">
-                                    <?php echo form_error('user_phone', '<small class="text-danger pl-3">', '</small>'); ?>
+                                    <input type="text" class="form-control" name="user_whatsapp" placeholder="No. Handphone" value="<?php echo $user->user_whatsapp; ?>">
+                                    <?php echo form_error('user_whatsapp', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
 
                             </div>

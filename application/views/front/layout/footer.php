@@ -6,15 +6,15 @@ $page      = $this->page_model->get_page();
 ?>
 
 <footer class="bg-white mt-auto">
-    <div class="bg-success py-md-3">
+    <!-- <div class="bg-success py-md-3">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 text-light"><span style="font-size:35px;font-weight:700;">Butuh Bantuan ? Hubungi Kami</span></div>
                 <div class="col-md-4 text-light"><span style="font-size:30px;font-weight:700;"><i class="ri-whatsapp-line"></i> <?php echo $meta->telepon; ?></span></div>
             </div>
         </div>
-    </div>
-    <div class="container pt-4 pt-md-5 pb-md-5 border-top">
+    </div> -->
+    <!-- <div class="container pt-4 pt-md-5 pb-md-5 border-top">
         <div class="row">
             <div class="col-12 col-md-3">
                 <a href="<?php echo base_url(); ?>"><img class="mb-2 img-fluid" src="<?php echo base_url('assets/img/logo/' . $meta->logo) ?>" alt="" width="250"></a>
@@ -51,7 +51,7 @@ $page      = $this->page_model->get_page();
                 </ul>
             </div>
         </div>
-    </div>
+    </div> -->
     <div class="credit border-top py-3">
         <div class="container">
             <div class="credit bg-white text-muted py-md-3">Copyright &copy; <?php echo date('Y') ?> - <?php echo $meta->title ?> - <?php echo $meta->tagline ?></div>
