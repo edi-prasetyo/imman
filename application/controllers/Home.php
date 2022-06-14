@@ -27,20 +27,21 @@ class Home extends CI_Controller
     $category                 = $this->category_model->get_category_home();
     $layanan                   = $this->layanan_model->get_layanan();
     $galery_featured            = $this->galery_model->featured();
-  
-      // Desktop View
-      $data = array(
-        'title'                 => $meta->title . ' - ' . $meta->tagline,
-        'keywords'              => $meta->title . ' - ' . $meta->tagline . ',' . $meta->keywords,
-        'deskripsi'             => $meta->description,
-        'slider'                =>  $slider,
-        'berita'                => $berita,
-        'category'              => $category,
-        'layanan'               => $layanan,
-        'galery_featured'       => $galery_featured,
-        'content'               => 'front/home/index_home'
-      );
-      $this->load->view('front/layout/wrapp', $data, FALSE);
-    
+    $home_dpp                      = $this->user_model->home_dpp();
+
+    // Desktop View
+    $data = array(
+      'title'                 => $meta->title . ' - ' . $meta->tagline,
+      'keywords'              => $meta->title . ' - ' . $meta->tagline . ',' . $meta->keywords,
+      'deskripsi'             => $meta->description,
+      'slider'                =>  $slider,
+      'berita'                => $berita,
+      'category'              => $category,
+      'layanan'               => $layanan,
+      'galery_featured'       => $galery_featured,
+      'home_dpp'              => $home_dpp,
+      'content'               => 'front/home/index_home'
+    );
+    $this->load->view('front/layout/wrapp', $data, FALSE);
   }
 }

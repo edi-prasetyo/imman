@@ -32,9 +32,11 @@ $meta = $this->meta_model->get_meta();
   <!-- Vendor CSS Files -->
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/template/front/vendor/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/template/front/css/style.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/template/front/css/card-slider.css">
   <!-- <link rel="stylesheet" href="<?php echo base_url() ?>assets/template/front/css/theme.css"> -->
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/template/front/vendor/offcanvas/offcanvas.css">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/template/front/icon/remixicon/remixicon.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/template/front/icon/tabler-icons/tabler-icons.min.css">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/template/front/icon/bootstrap-icons/font/bootstrap-icons.css">
   <link rel="stylesheet" href="<?php echo base_url(''); ?>assets/template/css/component-chosen.css">
   <link rel="stylesheet" href="<?php echo base_url(''); ?>assets/template/front/vendor/date-time-picker-bootstrap-4/css/bootstrap-datetimepicker.min.css" />

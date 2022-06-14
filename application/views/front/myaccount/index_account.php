@@ -28,7 +28,7 @@
                                 <h6><?php echo $user->user_name; ?></h6>
                                 <p class="text-secondary mb-1"><i class="bi-telephone-plus"></i> <?php echo $user->user_whatsapp; ?></p>
                                 <p class="text-muted font-size-sm"><?php echo $user->user_address; ?></p>
-                                <a href="<?php echo base_url('myaccount/update'); ?>" class="btn btn-outline-primary">Edit Profile</a>
+                                <!-- <a href="<?php echo base_url('myaccount/update'); ?>" class="btn btn-outline-primary">Edit Profile</a> -->
                             </div>
 
                         </div>

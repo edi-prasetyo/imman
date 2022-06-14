@@ -44,6 +44,20 @@ class User_model extends CI_Model
     $query = $this->db->get();
     return $query->result();
   }
+  public function pengurus($kota_id)
+  {
+    $this->db->select('user.*, user_role.role, jabatan.jabatan_name');
+    $this->db->from('user');
+    // join
+    $this->db->join('user_role', 'user_role.id = user.role_id', 'LEFT');
+    $this->db->join('jabatan', 'jabatan.id = user.jabatan_id', 'LEFT');
+    // End Join
+    $this->db->where('kota_id', $kota_id);
+    $this->db->or_where('role_id', 2);
+    $this->db->order_by('id', 'DESC');
+    $query = $this->db->get();
+    return $query->result();
+  }
   public function get_anggota()
   {
     $this->db->select('user.*, user_role.role');
@@ -52,6 +66,20 @@ class User_model extends CI_Model
     $this->db->join('user_role', 'user_role.id = user.role_id', 'LEFT');
     // End Join
     $this->db->where('role_id', 4);
+    $this->db->order_by('id', 'DESC');
+    $query = $this->db->get();
+    return $query->result();
+  }
+
+  public function home_dpp()
+  {
+    $this->db->select('user.*, user_role.role, jabatan.jabatan_name');
+    $this->db->from('user');
+    // join
+    $this->db->join('user_role', 'user_role.id = user.role_id', 'LEFT');
+    $this->db->join('jabatan', 'jabatan.id = user.jabatan_id', 'LEFT');
+    // End Join
+    $this->db->where('user_type', 'DPP');
     $this->db->order_by('id', 'DESC');
     $query = $this->db->get();
     return $query->result();

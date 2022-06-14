@@ -131,6 +131,43 @@ $meta = $this->meta_model->get_meta(); ?>
 </section> -->
 
 
+<!-- End Card Profile Slider -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <span class="h2 d-block">DPP IMMAN</span>
+            <!-- <a href="#" class="lead">Meet our people</a> -->
+            <p>Dewan pengurus Pusat Ikatan Muballigh muballighoh Nusantara</p>
+        </div>
+        <div class="col-md-9">
+            <section class="customer-logos slider">
+
+                <?php foreach ($home_dpp as $data) : ?>
+                    <div class="slide">
+                        <div class="card shadow-sm border-0 mb-3 text-center" style="height: 220px;overflow:hidden">
+                            <div class="card-body py-3">
+                                <div class="img-foto mx-auto">
+                                    <img class="" src="<?php echo base_url('assets/img/avatars/' . $data->user_image); ?>">
+                                </div>
+                                <h6 class="mt-2"> <?php echo $data->user_name; ?></h6>
+                                <!-- <span><?php echo $data->jabatan_name; ?></span> -->
+                            </div>
+                            <!-- <div class="card-footer pt-0 border-top-0">
+                               
+                            </div> -->
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+
+            </section>
+
+        </div>
+    </div>
+</div>
+
+
+
+
 
 
 <section class="py-5">

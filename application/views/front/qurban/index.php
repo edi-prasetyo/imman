@@ -24,8 +24,9 @@
     }
 
     .inputGroup label:before {
-        width: 10px;
-        height: 10px;
+        filter: grayscale(100%);
+        width: 1000px;
+        height: 1000px;
         border-radius: 50%;
         content: "";
         background-color: #333;
@@ -39,6 +40,29 @@
         box-shadow: 0 20px 50px rgba(0, 0, 0, .1);
 
     }
+
+    .inputGroup label:before {
+        /* filter: grayscale(100%); */
+        width: 1000px;
+        height: 1000px;
+        border-radius: 50%;
+        content: "";
+        background-color: #333;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale3d(1, 1, 1);
+        transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0;
+        z-index: -1;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, .1);
+
+    }
+
+
+
+
+
 
     .inputGroup label:after {
         width: 32px;
@@ -77,6 +101,10 @@
 
     }
 
+    img:after {
+        filter: grayscale(100%);
+    }
+
 
     .inputGroup input {
         width: 32px;
@@ -102,21 +130,19 @@
     </div>
 </div>
 
-
-<div class="container my-3">
+<div class="container">
 
     <div class="col-md-7 mx-auto">
-        <div class="card mb-3">
-            <div class="card-body row">
-                <div class="col-3"><img class="img-fluid" src=""> </div>
-                <div class="col-9">
-                    <h4>Qurban</h4>
-                </div>
+
+        <div class="offer-slider">
+            <div class="cat-item py-3">
+
+                <img src="<?php echo base_url('assets/img/galery/qurban.jpg'); ?>" class="img-fluid rounded">
+
             </div>
         </div>
+
         <?php echo form_open('qurban'); ?>
-
-
 
         <div class="card text-center justify-content-center mb-3">
             <div class="card-header bg-white">
@@ -124,74 +150,27 @@
             </div>
             <div class="card-body">
                 <div class="row">
+                    <?php foreach ($qurban as $qurban) : ?>
+                        <div class="col-12">
+                            <div class="inputGroup">
+                                <input id="qurban<?php echo $qurban->id; ?>" name="qurban_id" value="<?php echo $qurban->id; ?>" type="radio">
+                                <label for="qurban<?php echo $qurban->id; ?>">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <?php echo $qurban->qurban_name; ?> Rp. <?php echo number_format($qurban->qurban_price, 0, ",", "."); ?>
+                                        </div>
+                                        <div class="col-4">
+                                            <?php //echo $bank->bank_name; 
+                                            ?>
+                                        </div>
+                                    </div>
+                                </label>
+                                <?php echo form_error('bank_id', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+                        </div>
 
-                    <div class="col-12">
-                        <div class="inputGroup">
-                            <?php
-                            $result = array();
-                            $result['jenis'] = "Sapi";
-                            $result['harga'] = "17000000";
-                            ?>
-                            <input id="qurban1" name="qurban" value="<?php $result; ?>" type="radio">
-                            <label for="qurban1">
-                                <div class="row">
-                                    <div class="col-6">
-                                        Sapi Rp. 17,000,000
-                                    </div>
-                                    <div class="col-4">
-                                        <?php //echo $bank->bank_name; 
-                                        ?>
-                                    </div>
-                                </div>
-                            </label>
-                            <?php echo form_error('bank_id', '<small class="text-danger pl-3">', '</small>'); ?>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="inputGroup">
-                            <?php
-                            $result = array();
-                            $result['jenis'] = "Sapi Gabung";
-                            $result['harga'] = "2500000";
-                            ?>
-                            <input id="qurban2" name="bank_id" value="<?php print_r($result) ?>" type="radio">
-                            <label for="qurban2">
-                                <div class="row">
-                                    <div class="col-6">
-                                        Sapi Gabung Rp. 2,500,000
-                                    </div>
-                                    <div class="col-4">
-                                        <?php //echo $bank->bank_name; 
-                                        ?>
-                                    </div>
-                                </div>
-                            </label>
-                            <?php echo form_error('bank_id', '<small class="text-danger pl-3">', '</small>'); ?>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
 
-                    <div class="col-12">
-                        <div class="inputGroup">
-                            <?php
-                            $result = array();
-                            $result['jenis'] = "Kambing";
-                            $result['harga'] = "2500000";
-                            ?>
-                            <input id="qurban3" name="bank_id" value="<?php print_r($result) ?>" type="radio">
-                            <label for="qurban3">
-                                <div class="row">
-                                    <div class="col-6">
-                                        Kambing Rp. 2,500,000
-                                    </div>
-                                    <div class="col-4">
-                                        <?php //echo $bank->bank_name; 
-                                        ?>
-                                    </div>
-                                </div>
-                            </label>
-                            <?php echo form_error('bank_id', '<small class="text-danger pl-3">', '</small>'); ?>
-                        </div>
-                    </div>
                 </div>
 
             </div>
@@ -210,7 +189,7 @@
                                 <label for="radio<?php echo $bank->id; ?>">
                                     <div class="row">
                                         <div class="col-6">
-                                            <img class="img-fluid" src="<?php echo base_url('assets/img/bank/' . $bank->bank_logo); ?>">
+                                            <img class="img-fluid" id="img" src="<?php echo base_url('assets/img/bank/' . $bank->bank_logo); ?>">
                                         </div>
                                         <div class="col-4">
                                             <?php //echo $bank->bank_name; 
