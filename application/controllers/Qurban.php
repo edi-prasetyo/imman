@@ -30,79 +30,67 @@ class Qurban extends CI_Controller
         $send_email_order   = $this->pengaturan_model->sendemail_status_order();
         // var_dump($qurban);
         // die;
-        if (!$this->agent->is_mobile()) {
-
-            $this->form_validation->set_rules(
-                'donatur_name',
-                'Nama Donatur',
-                'required',
-                array(
-                    'required'                        => '%s Harus Diisi'
-                )
-            );
-            if ($this->form_validation->run() === FALSE) {
-                $data = [
-                    'title'                       => 'Qurban',
-                    'deskripsi'                   => 'Qurban di Bina Ummat',
-                    'keywords'                    => 'qurban, idul adha, hari raya qurban, qurban berkah',
-                    'bank'                        => $bank,
-                    'qurban'                      => $qurban,
-                    'content'                     => 'front/qurban/index'
-                ];
-                $this->load->view('front/layout/wrapp', $data, FALSE);
-            } else {
-
-                $id =  $this->input->post('qurban_id');
-                $transaction_qurban = $this->qurban_model->detail_qurban($id);
-
-                $donasi_title = $transaction_qurban->qurban_name;
-                $donasi_nominal = $transaction_qurban->qurban_price;
-
-                $sub = substr($donasi_nominal, -3);
-                $total =  random_string('numeric', 3);
-                $total_nominal =  $donasi_nominal + $total;
-                $kode_unik = substr($total_nominal, -3);
 
 
-                $data  = [
-                    'donasi_title'          => 'Qurban ' . $donasi_title,
-                    'donatur_name'          => $this->input->post('donatur_name'),
-                    'donatur_email'         => $this->input->post('donatur_email'),
-                    'donatur_phone'         => $this->input->post('donatur_phone'),
-                    'doa_khusus'            => $this->input->post('doa_khusus'),
-                    'bank_id'               => $this->input->post('bank_id'),
-                    'payment_method'        => 'Transfer Bank',
-                    'payment_status'        => 'Pending',
-                    'donasi_nominal'        => $donasi_nominal,
-                    'total_nominal'         => $total_nominal,
-                    'kode_unik'             => $kode_unik,
-                    'status_read'           => 0,
-                    'expired_at'            => date('Y-m-d H:i:s', strtotime("+1 day")),
-                    'created_at'            => date('Y-m-d H:i:s')
-
-                ];
-                $insert_id = $this->transaction_model->create($data);
-                $this->create_incoice_number($insert_id);
-                if ($send_email_order->status == 1) {
-                    $this->_sendEmail($insert_id);
-                    $this->session->set_flashdata('sukses', 'Checkout Berhasil');
-                    redirect(base_url('donasi/payment/' . md5($insert_id)), 'refresh');
-                } else {
-                    $this->session->set_flashdata('sukses', 'Checkout Berhasil');
-                    redirect(base_url('donasi/payment/' . md5($insert_id)), 'refresh');
-                }
-            }
-        } else {
-            // Mobile View
-            $data = array(
+        $this->form_validation->set_rules(
+            'donatur_name',
+            'Nama Donatur',
+            'required',
+            array(
+                'required'                        => '%s Harus Diisi'
+            )
+        );
+        if ($this->form_validation->run() === FALSE) {
+            $data = [
                 'title'                       => 'Qurban',
                 'deskripsi'                   => 'Qurban di Bina Ummat',
                 'keywords'                    => 'qurban, idul adha, hari raya qurban, qurban berkah',
                 'bank'                        => $bank,
                 'qurban'                      => $qurban,
-                'content'                     => 'mobile/qurban/index'
-            );
-            $this->load->view('mobile/layout/wrapp', $data, FALSE);
+                'content'                     => 'front/qurban/index'
+            ];
+            $this->load->view('front/layout/wrapp', $data, FALSE);
+        } else {
+
+            $id =  $this->input->post('qurban_id');
+            $transaction_qurban = $this->qurban_model->detail_qurban($id);
+
+            $donasi_title = $transaction_qurban->qurban_name;
+            $donasi_nominal = $transaction_qurban->qurban_price;
+
+            $sub = substr($donasi_nominal, -3);
+            $total =  random_string('numeric', 3);
+            $total_nominal =  $donasi_nominal + $total;
+            $kode_unik = substr($total_nominal, -3);
+
+
+            $data  = [
+                'donasi_title'          => 'Qurban ' . $donasi_title,
+                'donatur_name'          => $this->input->post('donatur_name'),
+                'donatur_email'         => $this->input->post('donatur_email'),
+                'donatur_phone'         => $this->input->post('donatur_phone'),
+                'doa_khusus'            => $this->input->post('doa_khusus'),
+                'bank_id'               => $this->input->post('bank_id'),
+                'payment_method'        => 'Transfer Bank',
+                'payment_status'        => 'Pending',
+                'donasi_nominal'        => $donasi_nominal,
+                'total_nominal'         => $total_nominal,
+                'kode_unik'             => $kode_unik,
+                'status_read'           => 0,
+                'expired_at'            => date('Y-m-d H:i:s', strtotime("+1 day")),
+                'created_at'            => date('Y-m-d H:i:s')
+
+            ];
+            $insert_id = $this->transaction_model->create($data);
+            $this->create_incoice_number($insert_id);
+            if ($send_email_order->status == 1) {
+                $this->_sendEmail($insert_id);
+                $this->session->set_flashdata('sukses', 'Checkout Berhasil');
+                redirect(base_url('donasi/payment/' . md5($insert_id)), 'refresh');
+            } else {
+                $this->session->set_flashdata('sukses', 'Checkout Berhasil');
+                redirect(base_url('donasi/payment/' . md5($insert_id)), 'refresh');
+            }
         }
     }
     public function create_incoice_number($insert_id)

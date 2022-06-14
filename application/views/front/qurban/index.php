@@ -183,7 +183,7 @@
             <div class="card-body">
                 <div class="row">
                     <?php foreach ($bank as $bank) : ?>
-                        <div class="col-6">
+                        <div class="col-md-6 col-12">
                             <div class="inputGroup">
                                 <input id="radio<?php echo $bank->id; ?>" name="bank_id" value="<?php echo $bank->id; ?>" type="radio">
                                 <label for="radio<?php echo $bank->id; ?>">
