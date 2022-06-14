@@ -183,7 +183,10 @@ class Pengurus extends CI_Controller
                 $config['max_size']             = 5000000; //Dalam Kilobyte
                 $config['max_width']            = 5000000; //Lebar (pixel)
                 $config['max_height']           = 5000000; //tinggi (pixel)
+                $config['remove_spaces']            = TRUE;
+                $config['encrypt_name']             = TRUE;
                 $this->load->library('upload', $config);
+                $this->upload->initialize($config);
                 if (!$this->upload->do_upload('user_image')) {
 
                     //End Validasi
@@ -218,51 +221,28 @@ class Pengurus extends CI_Controller
 
                     $email = $this->input->post('email', true);
 
-                    $user_whatsapp = $this->input->post('user_whatsapp');
-                    $phone = str_replace(' ', '', $user_whatsapp);
-                    $phone = str_replace('-', '', $user_whatsapp);
 
-                    // Ubah 0 menjadi 62
-                    // kadang ada penulisan no hp 0811 239 345
-                    $phone = str_replace(" ", "", $phone);
-                    // kadang ada penulisan no hp (0274) 778787
-                    $phone = str_replace("(", "", $phone);
-                    // kadang ada penulisan no hp (0274) 778787
-                    $phone = str_replace(")", "", $phone);
-                    // kadang ada penulisan no hp 0811.239.345
-                    $phone = str_replace(".", "", $phone);
 
-                    // cek apakah no hp mengandung karakter + dan 0-9
-                    if (!preg_match('/[^+0-9]/', trim($phone))) {
-                        // cek apakah no hp karakter 1-3 adalah +62
-                        if (substr(trim($phone), 0, 3) == '62') {
-                            $hp = trim($phone);
-                        }
-                        // cek apakah no hp karakter 1 adalah 0
-                        elseif (substr(trim($phone), 0, 1) == '0') {
-                            $hp = '62' . substr(trim($phone), 1);
-                        }
-                    }
 
                     $data  = array(
-                        'id'      => $id,
+                        'id'            => $id,
                         'provinsi_id'   => $this->input->post('provinsi_id'),
                         'kota_id'       => $this->input->post('kota_id'),
                         'user_create'   => $this->session->userdata('id'),
                         'user_name'     => htmlspecialchars($this->input->post('name', true)),
-                        'gender'     => $this->input->post('gender'),
+                        'gender'        => $this->input->post('gender'),
                         'user_type'     => $this->input->post('user_type'),
-                        'user_dai'     => $this->input->post('user_dai'),
-                        'jabatan_id'     => $this->input->post('jabatan_id'),
+                        'user_dai'      => $this->input->post('user_dai'),
+                        'jabatan_id'        => $this->input->post('jabatan_id'),
                         'email'         => htmlspecialchars($email),
                         'user_image'    => $upload_data['uploads']['file_name'],
                         'password'      => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
                         'role_id'       => $this->input->post('role_id'),
                         // 'user_phone'    => $this->input->post('user_phone'),
-                        'user_whatsapp' => $hp,
+                        'user_whatsapp' => $this->input->post('user_whatsapp'),
                         'user_address'  => $this->input->post('user_address'),
-                        'is_active'     => 0,
-                        'is_locked'     => 0,
+                        'is_active'     => 1,
+                        'is_locked'     => 1,
 
                         'updated_at'         => date('Y-m-d H:i:s')
 
@@ -276,31 +256,8 @@ class Pengurus extends CI_Controller
 
                     $email = $this->input->post('email', true);
 
-                $user_whatsapp = $this->input->post('user_whatsapp');
-                $phone = str_replace(' ', '', $user_whatsapp);
-                $phone = str_replace('-', '', $user_whatsapp);
 
-                // Ubah 0 menjadi 62
-                // kadang ada penulisan no hp 0811 239 345
-                $phone = str_replace(" ", "", $phone);
-                // kadang ada penulisan no hp (0274) 778787
-                $phone = str_replace("(", "", $phone);
-                // kadang ada penulisan no hp (0274) 778787
-                $phone = str_replace(")", "", $phone);
-                // kadang ada penulisan no hp 0811.239.345
-                $phone = str_replace(".", "", $phone);
 
-                // cek apakah no hp mengandung karakter + dan 0-9
-                if (!preg_match('/[^+0-9]/', trim($phone))) {
-                    // cek apakah no hp karakter 1-3 adalah +62
-                    if (substr(trim($phone), 0, 3) == '62') {
-                        $hp = trim($phone);
-                    }
-                    // cek apakah no hp karakter 1 adalah 0
-                    elseif (substr(trim($phone), 0, 1) == '0') {
-                        $hp = '62' . substr(trim($phone), 1);
-                    }
-                }
 
                 $data  = array(
                     'id'      => $id,
@@ -316,7 +273,7 @@ class Pengurus extends CI_Controller
                     'password'      => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
                     'role_id'       => $this->input->post('role_id'),
                     // 'user_phone'    => $this->input->post('user_phone'),
-                    'user_whatsapp' => $hp,
+                    'user_whatsapp' => $this->input->post('user_whatsapp'),
                     'user_address'  => $this->input->post('user_address'),
                     'is_active'     => 0,
                     'is_locked'     => 0,

@@ -5,6 +5,15 @@
         </div>
         <div class="card-body">
 
+            <div class="text-center">
+                <?php
+                echo $this->session->flashdata('message');
+                if (isset($error_upload)) {
+                    echo '<div class="alert alert-warning">' . $error_upload . '</div>';
+                }
+                ?>
+            </div>
+
             <?php
             echo form_open_multipart('admin/pengurus/update/' . $pengurus->id,  array('class' => 'needs-validation', 'novalidate' => 'novalidate'))
             ?>
