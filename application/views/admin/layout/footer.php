@@ -9,6 +9,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 <script src="<?php echo base_url('assets/template/admin/vendor/autocomplete/jquery-ui.js'); ?>"></script>
 
+
+
+
+
+
+
 <script type="text/javascript">
     $(document).ready(function() {
         $(function() {
@@ -24,6 +30,9 @@
                 $("#to").datepicker("option", "minDate", minValue);
             });
             $("#sisawaktu").datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
+            $("#agenda_time").datepicker({
                 dateFormat: 'yy-mm-dd'
             });
         });

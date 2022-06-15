@@ -27,7 +27,7 @@ $menu           = $this->menu_model->get_menu();
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="ti-user"></i> <?php echo $user->user_name; ?>
+              <i class="ti ti-user-circle"></i> <?php echo $user->user_name; ?>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="<?php echo base_url('myaccount') ?>"> <i class="ri-user-line"></i> Profile</a>

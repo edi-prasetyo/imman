@@ -18,6 +18,7 @@ class Home extends CI_Controller
     $this->load->model('berita_model');
     $this->load->model('layanan_model');
     $this->load->model('category_model');
+    $this->load->model('agenda_model');
   }
   public function index()
   {
@@ -28,6 +29,7 @@ class Home extends CI_Controller
     $layanan                   = $this->layanan_model->get_layanan();
     $galery_featured            = $this->galery_model->featured();
     $home_dpp                      = $this->user_model->home_dpp();
+    $agenda_home              = $this->agenda_model->agenda_home();
 
     // Desktop View
     $data = array(
@@ -40,6 +42,7 @@ class Home extends CI_Controller
       'layanan'               => $layanan,
       'galery_featured'       => $galery_featured,
       'home_dpp'              => $home_dpp,
+      'agenda_home'           => $agenda_home,
       'content'               => 'front/home/index_home'
     );
     $this->load->view('front/layout/wrapp', $data, FALSE);
