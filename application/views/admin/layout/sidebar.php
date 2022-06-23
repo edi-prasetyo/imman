@@ -5,158 +5,217 @@ $meta = $this->meta_model->get_meta();
 ?>
 
 
-<div class="d-flex" id="wrapper">
 
 
-    <div class="border-end pb-5" id="sidebar-wrapper">
-        <div class="sidebar-heading text-transparent"> </div>
-        <div class="py-4 px-3">
-            <div class="media">
-                <img src="<?php echo base_url('assets/img/avatars/' . $user->user_image); ?>" alt="..." width="65" class="mr-3 rounded-circle shadow-sm">
-                <div class="media-body my-3">
-                    <h5 class="m-0 text-muted"><?php echo $user->user_name; ?></h5>
-                    <small class="font-weight-light mb-0 text-success"><i class="fas fa-circle text-success"></i> Online</small>
-                </div>
-            </div>
-        </div>
-
-        <?php if ($user->role_id == 1) : ?>
-            <p class="text-muted font-weight-bold text-uppercase px-3 small pb-2 mb-0"><b>Main</b></p>
-            <ul class="nav flex-column  mb-0">
-
-                <li class="nav-item">
-                    <a href="<?php echo base_url('admin/dashboard'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "dashboard") {
-                                                                                                echo 'active';
-                                                                                            } ?>">
-                        <i class="feather-home  fa-fw"></i>
-                        Dashboard
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?php echo base_url('admin/pengurus'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "pengurus_dpd") {
-                                                                                            echo 'active';
-                                                                                        } ?>">
-                        <i class="feather-user  fa-fw"></i>
-                        Pengurus
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?php echo base_url('admin/anggota'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "anggota") {
-                                                                                            echo 'active';
-                                                                                        } ?>">
-                        <i class="feather-user  fa-fw"></i>
-                        Anggota
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?php echo base_url('admin/provinsi'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "provinsi") {
-                                                                                            echo 'active';
-                                                                                        } ?>">
-                        <i class="feather-building  fa-fw"></i>
-                        Provinsi
-                    </a>
-                </li>
 
 
-                <li class="nav-item">
-                    <a href="<?php echo base_url('admin/bank'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "bank") {
-                                                                                        echo 'active';
-                                                                                    } ?>">
-                        <i class="feather-credit-card mr-3  fa-fw"></i>
-                        Data Bank
-                    </a>
-                </li>
-
-                <p class="text-muted font-weight-bold text-uppercase px-3 small py-2 mb-0"><b>Web Front</b></p>
-                <li class="nav-item">
-
-                    <a href="<?php echo base_url('admin/berita'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "berita") {
-                                                                                            echo 'active';
-                                                                                        } ?>">
-                        <i class="feather-rss mr-3  fa-fw"></i>
-                        Berita
-                    </a>
-
-                    <a href="<?php echo base_url('admin/page'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "page") {
-                                                                                        echo 'active';
-                                                                                    } ?>">
-                        <i class="feather-file-text mr-3  fa-fw"></i>
-                        Page
-                    </a>
-                    <a href="<?php echo base_url('admin/layanan'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "layanan") {
-                                                                                            echo 'active';
-                                                                                        } ?>">
-                        <i class="feather-file-text mr-3  fa-fw"></i>
-                        Layanan
-                    </a>
-                    <a href="<?php echo base_url('admin/galery'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "galery") {
-                                                                                            echo 'active';
-                                                                                        } ?>">
-                        <i class="feather-camera mr-3  fa-fw"></i>
-                        Galery
-                    </a>
-
-                </li>
-                <p class="text-muted font-weight-bold text-uppercase px-3 small py-2 mb-0"><b>Pengaturan</b></p>
-
-                <li class="nav-item">
-                    <a href="<?php echo base_url('admin/user'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "user") {
-                                                                                        echo 'active';
-                                                                                    } ?>">
-                        <i class="feather-user mr-3  fa-fw"></i>
-                        User
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="<?php echo base_url('admin/meta'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "meta") {
-                                                                                        echo 'active';
-                                                                                    } ?>">
-                        <i class="feather-settings mr-3  fa-fw"></i>
-                        Profile Web
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?php echo base_url('admin/pengaturan'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "pengaturan") {
-                                                                                                echo 'active';
-                                                                                            } ?>">
-                        <i class="feather-mail mr-3  fa-fw"></i>
-                        Email Manajemen
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?php echo base_url('admin/menu'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "menu") {
-                                                                                        echo 'active';
-                                                                                    } ?>">
-                        <i class="feather-book-open mr-3  fa-fw"></i>
-                        Menu
-                    </a>
-                </li>
-            </ul>
-        <?php elseif ($user->role_id == 2) : ?>
-            <p class="text-muted font-weight-bold text-uppercase px-3 small pb-2 mb-0"><b>MENU</b></p>
-            <ul class="nav flex-column  mb-0">
-                <li class="nav-item">
-                    <a href="<?php echo base_url('admin/dashboard'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "dashboard") {
-                                                                                                echo 'active';
-                                                                                            } ?>">
-                        <i class="feather-home  fa-fw"></i>
-                        Dashboard
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?php echo base_url('admin/pengurus_dpd'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "pengurus_dpd") {
-                                                                                                echo 'active';
-                                                                                            } ?>">
-                        <i class="feather-user  fa-fw"></i>
-                        Data Pengurus
-                    </a>
-                </li>
-            </ul>
-
-        <?php elseif ($user->role_id == 3) : ?>
-        <?php endif; ?>
 
 
+<!-- Menu -->
+
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+    <div class="app-brand demo">
+        <a href="index.html" class="app-brand-link">
+            <span class="app-brand-logo demo">
+
+            </span>
+            <span class="app-brand-text demo menu-text fw-bolder ms-2">Sneat</span>
+        </a>
+
+        <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+            <i class="bx bx-chevron-left bx-sm align-middle"></i>
+        </a>
     </div>
-    <!-- End Sidebar -->
+
+    <div class="menu-inner-shadow"></div>
+
+    <ul class="menu-inner py-1">
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Main</span>
+        </li>
+        <?php if ($user->role_id == 1) : ?>
+            <!-- Dashboard -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == "dashboard") {
+                                        echo 'active';
+                                    } ?>">
+                <a href="<?php echo base_url('admin/dashboard'); ?>" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="Analytics">Dashboard</div>
+                </a>
+            </li>
+
+            <!-- Layouts -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == "pengurus" || $this->uri->segment(2) == "anggota" || $this->uri->segment(2) == "admin") {
+                                        echo 'active open';
+                                    } ?>">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-layout"></i>
+                    <div data-i18n="Layouts">Users</div>
+                </a>
+
+                <ul class="menu-sub">
+                    <li class="menu-item <?php if ($this->uri->segment(2) == "pengurus") {
+                                                echo 'active';
+                                            } ?>">
+                        <a href="<?php echo base_url('admin/pengurus'); ?>" class="menu-link">
+                            <div data-i18n="Without menu">Pengurus</div>
+                        </a>
+                    </li>
+                    <li class="menu-item <?php if ($this->uri->segment(2) == "anggota") {
+                                                echo 'active';
+                                            } ?>">
+                        <a href="<?php echo base_url('admin/anggota'); ?>" class="menu-link">
+                            <div data-i18n="Without navbar">Anggota</div>
+                        </a>
+                    </li>
+                    <li class="menu-item <?php if ($this->uri->segment(2) == "admin") {
+                                                echo 'active';
+                                            } ?>">
+                        <a href="<?php echo base_url('admin/admin'); ?>" class="menu-link">
+                            <div data-i18n="Container">Admin</div>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">Pages</span>
+            </li>
+            <li class="menu-item <?php if ($this->uri->segment(2) == "berita" || $this->uri->segment(2) == "category" || $this->uri->segment(2) == "page" || $this->uri->segment(2) == "galery") {
+                                        echo 'active open';
+                                    } ?>">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                    <div data-i18n="Account Settings">Web</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item <?php if ($this->uri->segment(2) == "berita") {
+                                                echo 'active';
+                                            } ?>">
+                        <a href="<?php echo base_url('admin/berita'); ?>" class="menu-link">
+                            <div data-i18n="Account">Berita</div>
+                        </a>
+                    </li>
+                    <li class="menu-item <?php if ($this->uri->segment(2) == "category") {
+                                                echo 'active';
+                                            } ?>">
+                        <a href="<?php echo base_url('admin/category'); ?>" class="menu-link">
+                            <div data-i18n="Notifications">Category</div>
+                        </a>
+                    </li>
+                    <li class="menu-item <?php if ($this->uri->segment(2) == "page") {
+                                                echo 'active';
+                                            } ?>">
+                        <a href="<?php echo base_url('admin/page'); ?>" class="menu-link">
+                            <div data-i18n="Connections">Page</div>
+                        </a>
+                    </li>
+                    <li class="menu-item <?php if ($this->uri->segment(2) == "galery") {
+                                                echo 'active';
+                                            } ?>">
+                        <a href="<?php echo base_url('admin/galery'); ?>" class="menu-link">
+                            <div data-i18n="Connections">Galery</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-item <?php if ($this->uri->segment(2) == "meta" || $this->uri->segment(2) == "email" || $this->uri->segment(2) == "menu" || $this->uri->segment(2) == "bank") {
+                                        echo 'active open';
+                                    } ?>">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
+                    <div data-i18n="Authentications">Pengaturan</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item <?php if ($this->uri->segment(2) == "meta") {
+                                                echo 'active';
+                                            } ?>">
+                        <a href="<?php echo base_url('admin/meta'); ?>" class="menu-link">
+                            <div data-i18n="Basic">Situs</div>
+                        </a>
+                    </li>
+                    <li class="menu-item <?php if ($this->uri->segment(2) == "pengaturan") {
+                                                echo 'active';
+                                            } ?>">
+                        <a href="<?php echo base_url('admin/pengaturan'); ?>" class="menu-link">
+                            <div data-i18n="Basic">Email</div>
+                        </a>
+                    </li>
+                    <li class="menu-item <?php if ($this->uri->segment(2) == "menu") {
+                                                echo 'active';
+                                            } ?>">
+                        <a href="<?php echo base_url('admin/menu'); ?>" class="menu-link">
+                            <div data-i18n="Basic">Menu</div>
+                        </a>
+                    </li>
+                    <li class="menu-item <?php if ($this->uri->segment(2) == "bank") {
+                                                echo 'active';
+                                            } ?>">
+                        <a href="<?php echo base_url('admin/bank'); ?>" class="menu-link">
+                            <div data-i18n="Basic">Bank</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+
+
+
+
+
+
+
+
+
+            <!-- Misc -->
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
+            <li class="menu-item">
+                <a href="#" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-support"></i>
+                    <div data-i18n="Support">Support</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-file"></i>
+                    <div data-i18n="Documentation">Documentation</div>
+                </a>
+            </li>
+    </ul>
+<?php elseif ($user->role_id == 2) : ?>
+    <!-- Dashboard -->
+    <li class="menu-item <?php if ($this->uri->segment(2) == "dashboard") {
+                                echo 'active';
+                            } ?>">
+        <a href="<?php echo base_url('admin/dashboard'); ?>" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+            <div data-i18n="Analytics">Dashboard</div>
+        </a>
+    </li>
+
+    <!-- Layouts -->
+    <li class="menu-item <?php if ($this->uri->segment(2) == "pengurus_dpd") {
+                                echo 'active open';
+                            } ?>">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <i class="menu-icon tf-icons bx bx-layout"></i>
+            <div data-i18n="Layouts">Users</div>
+        </a>
+
+        <ul class="menu-sub">
+            <li class="menu-item <?php if ($this->uri->segment(2) == "pengurus_dpd") {
+                                        echo 'active';
+                                    } ?>">
+                <a href="<?php echo base_url('admin/pengurus_dpd'); ?>" class="menu-link">
+                    <div data-i18n="Without menu">Pengurus</div>
+                </a>
+            </li>
+
+
+        </ul>
+    </li>
+<?php elseif ($user->role_id == 3) : ?>
+<?php endif; ?>
+</aside>

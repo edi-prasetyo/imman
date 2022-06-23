@@ -22,6 +22,7 @@ class Dashboard extends CI_Controller
     $user = $this->user_model->detail($id);
     $kota_id = $user->kota_id;
 
+
     $pengurus_dpd = $this->user_model->pengurus_dpd($kota_id);
 
     $data = [

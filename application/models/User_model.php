@@ -58,6 +58,25 @@ class User_model extends CI_Model
     $query = $this->db->get();
     return $query->result();
   }
+  public function cari_pengurus($kota_id = null)
+  {
+    $this->db->select('*');
+    $this->db->from('user');
+    // $this->db->where('user_type', 'DPP');
+    if (!empty($kota_id)) {
+      $this->db->like('md5(kota_id)', $kota_id);
+      $this->db->where('user_type', 'DPD');
+    }
+    return $this->db->get()->result_array();
+  }
+  // public function cari_pengurus($kota_id = null)
+  // {
+  //   $this->db->select('*');
+  //   $this->db->from('user');
+  //   $this->db->where('md5(kota_id)', $kota_id);
+  //   $query = $this->db->get();
+  //   return $query->result();
+  // }
   public function get_anggota()
   {
     $this->db->select('user.*, user_role.role');
@@ -114,12 +133,24 @@ class User_model extends CI_Model
   }
   public function user_detail($user_id)
   {
+    $this->db->select('user.*, jabatan.jabatan_name, kota.kota_name');
+    $this->db->from('user');
+    // join
+    $this->db->join('jabatan', 'jabatan.id = user.jabatan_id', 'LEFT');
+    $this->db->join('kota', 'kota.id = user.kota_id', 'LEFT');
+    // End Join
+    $this->db->where('user.id', $user_id);
+    $query = $this->db->get();
+    return $query->row();
+  }
+  public function detail_encrypt($user_id)
+  {
     $this->db->select('user.*, jabatan.jabatan_name');
     $this->db->from('user');
     // join
     $this->db->join('jabatan', 'jabatan.id = user.jabatan_id', 'LEFT');
     // End Join
-    $this->db->where('user.id', $user_id);
+    $this->db->where('md5(user.id)', $user_id);
     $query = $this->db->get();
     return $query->row();
   }
@@ -131,7 +162,7 @@ class User_model extends CI_Model
     $this->db->join('jabatan', 'jabatan.id = user.jabatan_id', 'LEFT');
     $this->db->join('kota', 'kota.id = user.kota_id', 'LEFT');
     // End Join
-    $this->db->where(['role_id' => 3, 'kota_id' => $kota_id]);
+    $this->db->where(['role_id' => 3, 'kota_id' => $kota_id, 'user_type' => 'DPD']);
     $this->db->or_where('role_id', 2);
     $this->db->order_by('id', 'DESC');
     $query = $this->db->get();
