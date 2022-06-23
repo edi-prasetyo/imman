@@ -6,11 +6,13 @@
                     <div class="e-profile">
                         <div class="row">
                             <div class="col-12 col-sm-auto mb-3">
-                                <div class="mx-auto" style="width: 140px;">
-                                    <img src="<?php echo base_url('assets/img/avatars/' . $pengurus->user_image); ?>" class="d-flex justify-content-center align-items-center rounded" style="height: 140px;">
+
+                                <div class="img-frame">
+                                    <img src="<?php echo base_url('assets/img/avatars/' . $pengurus->user_image); ?>" class="d-flex justify-content-center align-items-center rounded">
                                 </div>
+
                             </div>
-                            <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                            <div class=" col d-flex flex-column flex-sm-row justify-content-between mb-3">
                                 <div class="text-center text-sm-left mb-2 mb-sm-0">
                                     <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap"><?php echo $pengurus->user_name; ?></h4>
                                     <p class="mb-0"><?php echo $pengurus->jabatan_name; ?></p>

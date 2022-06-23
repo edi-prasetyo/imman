@@ -19,7 +19,7 @@ class Auth extends CI_Controller
 	public function index()
 	{
 		if ($this->session->userdata('id')) {
-			redirect('myaccount');
+			redirect('admin/dashboard');
 		}
 		$this->form_validation->set_rules(
 			'email',
@@ -39,25 +39,15 @@ class Auth extends CI_Controller
 			]
 		);
 		if ($this->form_validation->run() == false) {
-			if (!$this->agent->is_mobile()) {
-				// Desktop View
-				$data = [
-					'title' 		=> 'User Login',
-					'deskripsi'		=> 'deskripsi',
-					'keywords'		=> 'keywords',
-					'content'       => 'front/auth/login'
-				];
-				$this->load->view('front/layout/wrapp', $data, FALSE);
-			} else {
-				// Mobile View
-				$data = [
-					'title' 		=> 'User Login',
-					'deskripsi'		=> 'deskripsi',
-					'keywords'		=> 'keywords',
-					'content'       => 'mobile/auth/login'
-				];
-				$this->load->view('mobile/layout/wrapp', $data, FALSE);
-			}
+
+			// Desktop View
+			$data = [
+				'title' 		=> 'User Login',
+				'deskripsi'		=> 'deskripsi',
+				'keywords'		=> 'keywords',
+				'content'       => 'front/auth/login'
+			];
+			$this->load->view('front/layout/wrapp', $data, FALSE);
 		} else {
 			$this->_login();
 		}
@@ -83,7 +73,7 @@ class Auth extends CI_Controller
 					if ($user['role_id'] == 1) {
 						redirect('admin/dashboard');
 					} else {
-						redirect('myaccount');
+						redirect('admin/dashboard');
 					}
 				} else {
 					$this->session->set_flashdata('message', '<div class="alert alert-danger">Password Salah</div> ');

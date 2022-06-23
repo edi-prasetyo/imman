@@ -31,12 +31,15 @@
                                         <div class="text-center text-sm-left mb-2 mb-sm-0">
                                             <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap"><?php echo $user->user_name; ?></h4>
                                             <p class="mb-0"><?php echo $user->email; ?></p>
-                                            <div class="text-muted"><small>Last seen 2 hours ago</small></div>
+                                            <div class="text-muted"><small>ID : <?php echo str_pad($user->id, 5, '0', STR_PAD_LEFT); ?></small></div>
                                             <div class="mt-2">
-                                                <button class="btn btn-primary" type="button">
-                                                    <i class="fa fa-fw fa-camera"></i>
-                                                    <span>Kirim Pesan</span>
-                                                </button>
+                                                <?php if ($this->session->userdata('id')) : ?>
+                                                    <a class="btn btn-primary" href="<?php echo base_url('admin/profile/update'); ?>">
+                                                        <span>Ubah Profile</span>
+                                                    </a>
+                                                <?php else : ?>
+                                                <?php endif; ?>
+
                                             </div>
                                         </div>
                                         <div class="text-center text-sm-right">
@@ -79,7 +82,7 @@
                                                         <div class="col mb-3">
                                                             <div class="form-group">
                                                                 <label>Bio</label><br>
-                                                                Biografi
+                                                                <?php echo $user->user_bio; ?>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -102,13 +105,13 @@
 
                 <div class="col-12 col-md-3 mb-3">
 
-                    <div class="card">
+                    <!-- <div class="card">
                         <div class="card-body">
                             <h6 class="card-title font-weight-bold">Support</h6>
                             <p class="card-text">Get fast, free help from our friendly assistants.</p>
                             <button type="button" class="btn btn-primary">Contact Us</button>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 

@@ -133,10 +133,11 @@ class User_model extends CI_Model
   }
   public function user_detail($user_id)
   {
-    $this->db->select('user.*, jabatan.jabatan_name, kota.kota_name');
+    $this->db->select('user.*, jabatan.jabatan_name, kota.kota_name, user_role.role');
     $this->db->from('user');
     // join
     $this->db->join('jabatan', 'jabatan.id = user.jabatan_id', 'LEFT');
+    $this->db->join('user_role', 'user_role.id = user.role_id', 'LEFT');
     $this->db->join('kota', 'kota.id = user.kota_id', 'LEFT');
     // End Join
     $this->db->where('user.id', $user_id);

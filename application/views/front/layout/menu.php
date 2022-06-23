@@ -30,9 +30,9 @@ $menu           = $this->menu_model->get_menu();
               <i class="ti ti-user-circle"></i> <?php echo $user->user_name; ?>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="<?php echo base_url('myaccount') ?>"> <i class="ri-user-line"></i> Profile</a>
+              <!-- <a class="dropdown-item" href="<?php echo base_url('myaccount') ?>"> <i class="ri-user-line"></i> Profile</a>
               <a class="dropdown-item" href="<?php echo base_url('myaccount/update') ?>"> <i class="ri-draft-line"></i> Ubah Profile</a>
-              <a class="dropdown-item" href="<?php echo base_url('myaccount/ubah_password') ?>"> <i class="ri-lock-password-line"></i> Ubah Password</a>
+              <a class="dropdown-item" href="<?php echo base_url('myaccount/ubah_password') ?>"> <i class="ri-lock-password-line"></i> Ubah Password</a> -->
 
               <div class="dropdown-divider"></div>
               <?php if ($user->role_id == 1 || $user->role_id == 2 || $user->role_id == 3) : ?>

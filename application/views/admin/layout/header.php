@@ -14,7 +14,7 @@ $meta = $this->meta_model->get_meta();
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="<?php echo base_url('assets/img/logo/' . $meta->favicon); ?>" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -27,12 +27,13 @@ $meta = $this->meta_model->get_meta();
     <!-- Core CSS -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/template/web/vendor/css/core.css" class="template-customizer-core-css" />
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/template/web/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="<?php echo base_url() ?>assets/template/web/css/demo.css" />
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/template/web/css/style.css" />
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/template/web/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/template/web/vendor/libs/apex-charts/apex-charts.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.25.1/ui/trumbowyg.min.css" integrity="sha512-nwpMzLYxfwDnu68Rt9PqLqgVtHkIJxEPrlu3PfTfLQKVgBAlTKDmim1JvCGNyNRtyvCx1nNIVBfYm8UZotWd4Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Page CSS -->
 

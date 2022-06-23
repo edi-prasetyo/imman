@@ -27,6 +27,13 @@ class Pengurus extends CI_Controller
         $kota       = $this->kota_model->get_allkota();
         $kota_id    = $this->input->get('kota_id');
         $pengurus   = $this->user_model->cari_pengurus($kota_id);
+        // $kota_name_id = $this->kota_model->detail_encrypt($kota_id);
+        // $kota_name = $kota_name_id->kota_name;
+
+        // if ($kota_name == null) {
+        // } else {
+        //     $kota_name;
+        // }
         // var_dump($pengurus);
         // die;
 
@@ -39,7 +46,8 @@ class Pengurus extends CI_Controller
             'paginasi'                    => $this->pagination->create_links(),
             'pengurus'                      => $pengurus,
             'kota_id'                      => $kota_id,
-            'kota'                          => $kota,
+            'kota'                        => $kota,
+            // 'kota_name'                 => $kota_name,
             'content'                     => 'front/pengurus/index'
         );
         $this->load->view('front/layout/wrapp', $data, FALSE);

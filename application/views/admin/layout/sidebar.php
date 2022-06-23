@@ -4,22 +4,15 @@ $user = $this->user_model->user_detail($id);
 $meta = $this->meta_model->get_meta();
 ?>
 
-
-
-
-
-
-
-
 <!-- Menu -->
 
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-        <a href="index.html" class="app-brand-link">
-            <span class="app-brand-logo demo">
-
+        <a href="<?php echo base_url('admin/dashboard'); ?>" class="app-brand-link">
+            <span class="app-brand-logo demo my-3">
+                <img width="60px" class="img-fluid" src="<?php echo base_url('assets/img/logo/' . $meta->favicon); ?>">
             </span>
-            <span class="app-brand-text demo menu-text fw-bolder ms-2">Sneat</span>
+            <span class="app-brand-text demo menu-text fw-bolder ms-2">Admin</span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -196,7 +189,7 @@ $meta = $this->meta_model->get_meta();
     </li>
 
     <!-- Layouts -->
-    <li class="menu-item <?php if ($this->uri->segment(2) == "pengurus_dpd") {
+    <li class="menu-item <?php if ($this->uri->segment(2) == "pengurus_dpd" || $this->uri->segment(3) == "create") {
                                 echo 'active open';
                             } ?>">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -212,10 +205,84 @@ $meta = $this->meta_model->get_meta();
                     <div data-i18n="Without menu">Pengurus</div>
                 </a>
             </li>
+            <li class="menu-item <?php if ($this->uri->segment(3) == "create") {
+                                        echo 'active';
+                                    } ?>">
+                <a href="<?php echo base_url('admin/pengurus_dpd/create'); ?>" class="menu-link">
+                    <div data-i18n="Without menu">Tambah Pengurus</div>
+                </a>
+            </li>
 
 
         </ul>
     </li>
+
+    <li class="menu-item <?php if ($this->uri->segment(3) == "update" || $this->uri->segment(3) == "update_password") {
+                                echo 'active open';
+                            } ?>">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <i class="menu-icon tf-icons bx bx-user"></i>
+            <div data-i18n="Layouts">Profile</div>
+        </a>
+
+        <ul class="menu-sub">
+            <li class="menu-item <?php if ($this->uri->segment(3) == "update") {
+                                        echo 'active';
+                                    } ?>">
+                <a href="<?php echo base_url('admin/profile/update'); ?>" class="menu-link">
+                    <div data-i18n="Without menu">Ubah Profile</div>
+                </a>
+            </li>
+            <li class="menu-item <?php if ($this->uri->segment(3) == "update_password") {
+                                        echo 'active';
+                                    } ?>">
+                <a href="<?php echo base_url('admin/profile/update_password'); ?>" class="menu-link">
+                    <div data-i18n="Without menu">Ubah Password</div>
+                </a>
+            </li>
+
+
+        </ul>
+    </li>
+
 <?php elseif ($user->role_id == 3) : ?>
+    <!-- Dashboard -->
+    <li class="menu-item <?php if ($this->uri->segment(2) == "dashboard") {
+                                echo 'active';
+                            } ?>">
+        <a href="<?php echo base_url('admin/dashboard'); ?>" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+            <div data-i18n="Analytics">Dashboard</div>
+        </a>
+    </li>
+
+    <!-- Layouts -->
+    <li class="menu-item <?php if ($this->uri->segment(3) == "update" || $this->uri->segment(3) == "update_password") {
+                                echo 'active open';
+                            } ?>">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <i class="menu-icon tf-icons bx bx-user"></i>
+            <div data-i18n="Layouts">Profile</div>
+        </a>
+
+        <ul class="menu-sub">
+            <li class="menu-item <?php if ($this->uri->segment(3) == "update") {
+                                        echo 'active';
+                                    } ?>">
+                <a href="<?php echo base_url('admin/profile/update'); ?>" class="menu-link">
+                    <div data-i18n="Without menu">Ubah Profile</div>
+                </a>
+            </li>
+            <li class="menu-item <?php if ($this->uri->segment(3) == "update_password") {
+                                        echo 'active';
+                                    } ?>">
+                <a href="<?php echo base_url('admin/profile/update_password'); ?>" class="menu-link">
+                    <div data-i18n="Without menu">Ubah Password</div>
+                </a>
+            </li>
+
+
+        </ul>
+    </li>
 <?php endif; ?>
 </aside>

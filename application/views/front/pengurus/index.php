@@ -15,6 +15,7 @@
             <div class="form-group">
                 <label class="form-label">Pilih Kota</label>
                 <select class="form-control form-control-chosen" name="kota_id">
+                    <option value="">--Pilih Kota--</option>
                     <?php foreach ($kota as $data) : ?>
                         <option value="<?php echo md5($data->id); ?>"><?php echo $data->kota_name; ?></option>
                     <?php endforeach; ?>
@@ -26,8 +27,6 @@
             <label class="form-label" style="visibility: hidden;">A</label>
             <button type="submit" class="btn btn-warning btn-block">Cari</button>
         </div>
-
-
 
     </div>
     <?php echo form_close(); ?>
@@ -68,12 +67,6 @@
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
 
         <?php endforeach; ?>
     </div>
