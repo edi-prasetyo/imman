@@ -54,7 +54,10 @@
                                             <div class="col">
                                                 <div class="form-group mb-3">
                                                     <label>Nomor Whatsapp</label>
-                                                    <input class="form-control" type="text" name="user_whatsapp" value="<?php echo $user->user_whatsapp; ?>">
+                                                    <?php $hp = $user->user_whatsapp;
+                                                    $hp0 = substr_replace($hp, '0', 0, 2);
+                                                    ?>
+                                                    <input class="form-control" type="text" name="user_whatsapp" value="<?php echo $hp0; ?>">
                                                 </div>
                                             </div>
                                         </div>

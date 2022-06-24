@@ -138,8 +138,8 @@ class Pengurus extends CI_Controller
                     'user_phone'    => $this->input->post('user_phone'),
                     'user_whatsapp' => $hp,
                     'user_address'  => $this->input->post('user_address'),
-                    'is_active'     => 0,
-                    'is_locked'     => 0,
+                    'is_active'     => 1,
+                    'is_locked'     => 1,
                     'created_at'  => date('Y-m-d H:i:s')
                 ];
                 $this->db->insert('user', $data);
