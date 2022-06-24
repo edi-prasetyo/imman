@@ -163,8 +163,7 @@ class User_model extends CI_Model
     $this->db->join('jabatan', 'jabatan.id = user.jabatan_id', 'LEFT');
     $this->db->join('kota', 'kota.id = user.kota_id', 'LEFT');
     // End Join
-    $this->db->where(['role_id' => 3, 'kota_id' => $kota_id, 'user_type' => 'DPD']);
-    $this->db->or_where('role_id', 2);
+    $this->db->where(['kota_id' => $kota_id, 'user_type' => 'DPD']);
     $this->db->order_by('id', 'DESC');
     $query = $this->db->get();
     return $query->result();
