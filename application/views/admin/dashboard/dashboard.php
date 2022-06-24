@@ -247,12 +247,14 @@ $user = $this->user_model->user_detail($id);
                                 Anda Saat ini adalah Admin dari DPD IMMAN <b><?php echo $user->kota_name; ?></b>.
                             </p>
 
-                            <a href="javascript:;" class="btn btn-sm btn-outline-primary">Lihat Profile Saya</a>
+                            <a href="<?php echo base_url('user?id=' . md5($user->id)); ?>" class="btn btn-sm btn-outline-primary">Lihat Profile Saya</a>
                         </div>
                     </div>
                     <div class="col-sm-3 col-5 text-center text-sm-left">
                         <div class="card-body px-md-4">
-                            <img class="img-fluid" src="<?php echo base_url('assets/img/avatars/' . $user->user_image); ?>">
+                            <div class="img-frame">
+                                <img class="img-fluid rounded" src="<?php echo base_url('assets/img/avatars/' . $user->user_image); ?>">
+                            </div>
                         </div>
                     </div>
                 </div>

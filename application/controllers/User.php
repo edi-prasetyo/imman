@@ -28,9 +28,9 @@ class User extends CI_Controller
 
         // Desktop View
         $data = array(
-            'title'                       => 'Galery - ' . $meta->title,
-            'deskripsi'                   => 'Galery - ' . $meta->description,
-            'keywords'                    => 'Galery - ' . $meta->keywords,
+            'title'                       => $meta->title,
+            'deskripsi'                   => $meta->description,
+            'keywords'                    => $meta->keywords,
             'paginasi'                    => $this->pagination->create_links(),
             'user'                      => $user,
             'content'                     => 'front/pengurus/detail'
