@@ -27,10 +27,10 @@
         </div>
 
         <div class="form-group row mb-3">
-            <label class="col-lg-3 col-form-label">Waktu<span class="text-danger">*</span>
+            <label class="col-lg-3 col-form-label">Tanggal<span class="text-danger">*</span>
             </label>
             <div class="col-lg-9">
-                <input type="text" class="form-control" name="agenda_date" id="agenda_time">
+                <input type="date" class="form-control" name="agenda_date" id="agenda_time">
                 <div class="invalid-feedback">Judul Harus Di isi</div>
             </div>
         </div>

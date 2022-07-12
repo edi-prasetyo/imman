@@ -29,10 +29,34 @@ class Pengurus_dpd extends CI_Controller
     {
         $jabatan       = $this->jabatan_model->get_jabatan();
         $this->form_validation->set_rules(
+            'jabatan_id',
+            'Jabatan',
+            'required',
+            ['required' => 'Form harus di pilih']
+        );
+        $this->form_validation->set_rules(
+            'user_dai',
+            'Jabatan',
+            'required',
+            ['required' => 'Form harus di pilih']
+        );
+        $this->form_validation->set_rules(
+            'role_id',
+            'Hak Akses',
+            'required',
+            ['required' => 'Hak Akses harus di pilih']
+        );
+        $this->form_validation->set_rules(
             'name',
             'Nama',
-            'required|trim',
-            ['required' => 'nama harus di isi']
+            'required',
+            ['required' => 'Nama harus di isi']
+        );
+        $this->form_validation->set_rules(
+            'gender',
+            'Nama',
+            'required',
+            ['required' => 'Jenis Kelamin harus di pilih']
         );
         $this->form_validation->set_rules(
             'email',
@@ -45,10 +69,20 @@ class Pengurus_dpd extends CI_Controller
             ]
         );
         $this->form_validation->set_rules(
+            'user_whatsapp',
+            'Nomor Whatsapp',
+            'required|is_unique[user.user_whatsapp]',
+            [
+                'required'     => 'Nomor HP Harus diisi',
+                'is_unique'    => 'Nomor HP Sudah Terdaftar, Gunakan lain'
+            ]
+        );
+        $this->form_validation->set_rules(
             'password1',
             'Password',
             'required|trim|min_length[3]|matches[password2]',
             [
+                'required'      => 'Password Harus Di isi',
                 'matches'     => 'Password tidak sama',
                 'min_length'   => 'Password Min 3 karakter'
             ]

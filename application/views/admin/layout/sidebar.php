@@ -75,7 +75,7 @@ $meta = $this->meta_model->get_meta();
             <li class="menu-header small text-uppercase">
                 <span class="menu-header-text">Pages</span>
             </li>
-            <li class="menu-item <?php if ($this->uri->segment(2) == "berita" || $this->uri->segment(2) == "category" || $this->uri->segment(2) == "page" || $this->uri->segment(2) == "galery") {
+            <li class="menu-item <?php if ($this->uri->segment(2) == "berita" || $this->uri->segment(2) == "category" || $this->uri->segment(2) == "page" || $this->uri->segment(2) == "galery" || $this->uri->segment(2) == "agenda") {
                                         echo 'active open';
                                     } ?>">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -109,6 +109,13 @@ $meta = $this->meta_model->get_meta();
                                             } ?>">
                         <a href="<?php echo base_url('admin/galery'); ?>" class="menu-link">
                             <div data-i18n="Connections">Galery</div>
+                        </a>
+                    </li>
+                    <li class="menu-item <?php if ($this->uri->segment(2) == "agenda") {
+                                                echo 'active';
+                                            } ?>">
+                        <a href="<?php echo base_url('admin/agenda'); ?>" class="menu-link">
+                            <div data-i18n="Connections">Agenda</div>
                         </a>
                     </li>
                 </ul>
