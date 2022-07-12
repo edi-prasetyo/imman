@@ -30,7 +30,7 @@
             <label class="col-lg-3 col-form-label">Tanggal<span class="text-danger">*</span>
             </label>
             <div class="col-lg-9">
-                <input type="text" class="form-control" name="agenda_date" id="agenda_time">
+                <input type="date" class="form-control" name="agenda_date" id="agenda_time">
                 <div class="invalid-feedback">Judul Harus Di isi</div>
             </div>
         </div>
@@ -87,7 +87,7 @@
             </label>
             <div class="col-lg-9">
 
-                <textarea class="form-control" id="summernote" name="agenda_desc" placeholder="Deskripsi Agenda" required><?php echo $agenda->agenda_desc; ?></textarea>
+                <textarea class="form-control" id="my-editor" name="agenda_desc" placeholder="Deskripsi Agenda" required><?php echo $agenda->agenda_desc; ?></textarea>
                 <div class="invalid-feedback">Silahkan Isi Deskripsi Berita</div>
             </div>
         </div>

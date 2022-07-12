@@ -81,7 +81,7 @@
             </label>
             <div class="col-lg-9">
 
-                <textarea class="form-control" id="summernote" name="agenda_desc" placeholder="Deskripsi Berita" required><?php echo set_value('agenda_desc'); ?></textarea>
+                <textarea class="form-control" id="my-editor" name="agenda_desc" placeholder="Deskripsi Berita" required><?php echo set_value('agenda_desc'); ?></textarea>
                 <div class="invalid-feedback">Silahkan Isi Deskripsi Berita</div>
             </div>
         </div>
