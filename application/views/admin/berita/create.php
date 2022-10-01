@@ -17,19 +17,19 @@
         echo form_open_multipart('admin/berita/create',  array('class' => 'needs-validation', 'novalidate' => 'novalidate'));
         ?>
 
-        <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Judul Berita <span class="text-danger">*</span>
+        <div class="form-group row mb-3">
+            <label class="col-lg-3 form-label">Judul Berita <span class="text-danger">*</span>
             </label>
             <div class="col-lg-9">
                 <input type="text" class="form-control" name="berita_title" placeholder="Judul Berita" value="<?php echo set_value('berita_title'); ?>" required>
                 <div class="invalid-feedback">Judul Harus Di isi</div>
             </div>
         </div>
-        <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Kategori <span class="text-danger">*</span>
+        <div class="form-group row mb-3">
+            <label class="col-lg-3 form-label">Kategori <span class="text-danger">*</span>
             </label>
             <div class="col-lg-9">
-                <select name="category_id" class="form-control custom-select" required>
+                <select name="category_id" class="form-control form-select" required>
                     <option value="">Pilih Kategori</option>
                     <?php foreach ($category as $category) { ?>
                         <option value="<?php echo $category->id ?>">
@@ -40,11 +40,11 @@
                 <div class="invalid-feedback">Anda harus memilih Kategori</div>
             </div>
         </div>
-        <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Status Berita <span class="text-danger">*</span>
+        <div class="form-group row mb-3">
+            <label class="col-lg-3 form-label">Status Berita <span class="text-danger">*</span>
             </label>
             <div class="col-lg-9">
-                <select name="berita_status" class="form-control custom-select" required>
+                <select name="berita_status" class="form-control form-select" required>
                     <option value="">Pilih Status</option>
                     <option value="Publish">Publish</option>
                     <option value="Draft">Draft</option>
@@ -52,8 +52,8 @@
                 <div class="invalid-feedback">Silahkan pilih status berita</div>
             </div>
         </div>
-        <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Upload Gambar <span class="text-danger">*</span>
+        <div class="form-group row mb-3">
+            <label class="col-lg-3 form-label">Upload Gambar <span class="text-danger">*</span>
             </label>
             <div class="col-lg-6">
                 <div class="input-group mb-3">
@@ -62,8 +62,8 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Deskripsi Berita <span class="text-danger">*</span>
+        <div class="form-group row mb-3">
+            <label class="col-lg-3 form-label">Deskripsi Berita <span class="text-danger">*</span>
             </label>
             <div class="col-lg-9">
 
@@ -71,15 +71,15 @@
                 <div class="invalid-feedback">Silahkan Isi Deskripsi Berita</div>
             </div>
         </div>
-        <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Keywords
+        <div class="form-group row mb-3">
+            <label class="col-lg-3 form-label">Keywords
             </label>
             <div class="col-lg-9">
                 <input type="text" class="form-control" name="berita_keywords" placeholder="Pisahkan dengan koma" value="<?php echo set_value('berita_keywords'); ?>">
             </div>
         </div>
 
-        <div class="form-group row">
+        <div class="form-group row mb-3">
             <div class="col-lg-3"></div>
             <div class="col-lg-9">
                 <button type="submit" class="btn btn-primary btn-lg btn-block">

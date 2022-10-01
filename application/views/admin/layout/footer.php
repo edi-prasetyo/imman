@@ -19,14 +19,36 @@
  <script src="<?php echo base_url() ?>assets/template/web/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
  <script src="<?php echo base_url() ?>assets/template/web/vendor/js/menu.js"></script>
- <!-- endbuild -->
- <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.25.1/trumbowyg.min.js" integrity="sha512-t4CFex/T+ioTF5y0QZnCY9r5fkE8bMf9uoNH2HNSwsiTaMQMO0C9KbKPMvwWNdVaEO51nDL3pAzg4ydjWXaqbg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+ <!--SUMMERNOTE-->
+ <link href="<?php echo base_url('assets/template/admin/vendor/summernote/summernote-lite.min.css'); ?> " rel="stylesheet">
+ <script src="<?php echo base_url('assets/template/admin/vendor/summernote/summernote-lite.min.js'); ?>"></script>
  <script>
-     // Doing this in a loaded JS file is better, I put this here for simplicity
-     $('#my-editor').trumbowyg();
+     $('#summernote').summernote({
+         tabsize: 2,
+         height: 130,
+
+         tooltip: false
+     });
+     $('#summernote2').summernote({
+         tabsize: 2,
+         height: 130,
+
+         tooltip: false
+     });
+     $('#summernote3').summernote({
+         tabsize: 2,
+         height: 130,
+
+         tooltip: false
+     });
+     $('#summernote4').summernote({
+         tabsize: 2,
+         height: 130,
+
+         tooltip: false
+     });
  </script>
-
-
 
  <!-- Main JS -->
  <script src="<?php echo base_url() ?>assets/template/web/js/main.js"></script>
