@@ -104,10 +104,9 @@ class Berita extends CI_Controller
         'berita'                      => $berita,
         'category'                    => $category,
         'donasi_popular'               => $donasi_popular,
-        'content'                     => 'front/berita/detail_berita'
       );
       $this->add_count($berita_slug);
-      $this->load->view('front/layout/wrapp', $data, FALSE);
+      $this->load->view('front/berita/detail_berita', $data, FALSE);
     } else {
       // Mobile View
       $data                           = array(
