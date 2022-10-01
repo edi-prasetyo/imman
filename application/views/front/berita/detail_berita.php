@@ -25,7 +25,7 @@ $meta = $this->meta_model->get_meta();
     <meta property="og:title" content="<?php echo $meta->title . ',' . $keywords ?>" />
     <meta property="og:description" content="<?php echo $deskripsi ?>" />
     <meta property="og:url" content="<?php echo base_url(); ?>" />
-    <meta property="og:image" content="<?php echo base_url('assets/img/berita/' . $berita->berita_gambar); ?>" />
+    <meta property="og:image" content="<?php echo base_url('assets/img/artikel/' . $berita->berita_gambar); ?>" />
     <meta property="og:site_name" content="<?php echo $meta->title ?>" />
     <meta name="twitter:description" content="<?php echo $deskripsi ?>" />
     <meta name="twitter:title" content="<?php echo $meta->title ?>" />
