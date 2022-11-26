@@ -36,6 +36,22 @@ $meta = $this->meta_model->get_meta();
                     <div data-i18n="Analytics">Dashboard</div>
                 </a>
             </li>
+            <li class="menu-item <?php if ($this->uri->segment(2) == "donasi") {
+                                        echo 'active';
+                                    } ?>">
+                <a href="<?php echo base_url('admin/donasi'); ?>" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-donate-heart"></i>
+                    <div data-i18n="Analytics">Donasi</div>
+                </a>
+            </li>
+            <li class="menu-item <?php if ($this->uri->segment(2) == "transaction") {
+                                        echo 'active';
+                                    } ?>">
+                <a href="<?php echo base_url('admin/transaction'); ?>" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-wallet"></i>
+                    <div data-i18n="Analytics">Transaksi</div>
+                </a>
+            </li>
 
             <!-- Layouts -->
             <li class="menu-item <?php if ($this->uri->segment(2) == "pengurus" || $this->uri->segment(2) == "anggota" || $this->uri->segment(2) == "admin") {

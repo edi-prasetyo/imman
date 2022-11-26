@@ -168,4 +168,17 @@ class User_model extends CI_Model
     $query = $this->db->get();
     return $query->result();
   }
+  public function pengurus_dpp()
+  {
+    $this->db->select('user.*, jabatan.jabatan_name, kota.kota_name');
+    $this->db->from('user');
+    // join
+    $this->db->join('jabatan', 'jabatan.id = user.jabatan_id', 'LEFT');
+    $this->db->join('kota', 'kota.id = user.kota_id', 'LEFT');
+    // End Join
+    $this->db->where(['user_type' => 'DPP']);
+    $this->db->order_by('id', 'ASC');
+    $query = $this->db->get();
+    return $query->result();
+  }
 }

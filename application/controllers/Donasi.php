@@ -125,35 +125,19 @@ class Donasi extends CI_Controller
         // var_dump($donatur);
         // die;
 
-        if (!$this->agent->is_mobile()) {
-            // Desktop View
-            $data                             = array(
-                'title'                       => $donasi->donasi_title,
-                'deskripsi'                   => $donasi->donasi_title,
-                'keywords'                    => $donasi->donasi_keywords,
-                'donasi'                      => $donasi,
-                'category'                    => $category,
-                'listdonatur'                     => $listdonatur,
-                'pagination'                  => $this->pagination->create_links(),
-                'content'                     => 'front/donasi/detail_donasi'
-            );
-            $this->add_count($donasi_slug);
-            $this->load->view('front/layout/wrapp', $data, FALSE);
-        } else {
-            // Mobile View
-            $data                           = array(
-                'title'                       => $donasi->donasi_title,
-                'deskripsi'                   => $donasi->donasi_title,
-                'keywords'                    => $donasi->donasi_keywords,
-                'donasi'                      => $donasi,
-                'category'                    => $category,
-                'listdonatur'                       => $listdonatur,
-                'pagination'                    => $this->pagination->create_links(),
-                'content'                     => 'mobile/donasi/detail'
-            );
-            $this->add_count($donasi_slug);
-            $this->load->view('mobile/layout/wrapp', $data, FALSE);
-        }
+
+        $data                             = array(
+            'title'                       => $donasi->donasi_title,
+            'deskripsi'                   => $donasi->donasi_title,
+            'keywords'                    => $donasi->donasi_keywords,
+            'donasi'                      => $donasi,
+            'category'                    => $category,
+            'listdonatur'                     => $listdonatur,
+            'pagination'                  => $this->pagination->create_links(),
+            'content'                     => 'front/donasi/detail_donasi'
+        );
+        $this->add_count($donasi_slug);
+        $this->load->view('front/donasi/detail_donasi', $data, FALSE);
     }
 
 
